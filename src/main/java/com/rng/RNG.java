@@ -47,16 +47,29 @@ class RNG {
         long hash = Long.parseLong(result, 16);
         return (hash % 100000000) + 1;
     }
+    //a method that generates a list of roll values based on a loop that runs i times
+    public static void loopGenerator(String clientSeed, String serverSeed,Integer start, Integer end){
+        List<Long> rollvalues = new ArrayList<>();
+        for (int i = start; i <= end; i++) {
+            RNG rng = new RNG(clientSeed, serverSeed, i);
+            long rollval = rng.randomRollValue();
+            rollvalues.add(rollval);
+        }
+        System.out.println(rollvalues);
+    }
+    
 
     // main method
     /**
      * @param args
      */
     public static void main(String[] args) {
-        RNG rng = new RNG("c", "s", 1);
+
+        RNG rng = new RNG("JR?901B7aWTn7HP23T5djDi0Qa9Ry-243qhbEC7+`_O262O~A8erf)e0$zK0YN8L","76uYx9KRy4tTBD7&snhw83b875HU\"Or0g14220tk3e9RI363aT2D#v`^vfoJuqa", 2576);
         long rollval = rng.randomRollValue();
         System.out.println(rollval);
-        seedpairGen();
+        //seedpairGen();
+        loopGenerator("Y7>V3*6152nz471AKVwmh3xyMZfO5fPq;0gY354W-J69<GbcUULRt26o0ghNq1B2","j$;BT9V4nqR1U0g15Tyl40pkhJw23CZdjiXxo2S87u6'1D52A5*s7W607x3B3aRr", 2522,2600);
         
         
     }
